@@ -12,5 +12,3 @@
     <title>PHP CRUD Student Entry System</title>
 </head>
 <body>
-
-</body>

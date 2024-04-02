@@ -2,7 +2,7 @@
 $servername = "localhost:3310";
 $username = "root";
 $password = "";
-$dbname = "studentManagement";
+$dbname = "studentmanagement";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -21,7 +21,7 @@ reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
 if ($conn->query($sql) === TRUE) {
-  echo "Table MyGuests created successfully";
+  echo "Table created successfully";
 } else {
   echo "Error creating table: " . $conn->error;
 }
