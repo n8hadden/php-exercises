@@ -19,5 +19,10 @@
     ?>
 </div>
 
+<!-- Back Button -->
+<div class="container text-center mt-5">
+    <a href="home.php" class="btn btn-warning mt-5">Back</a>
+</div>
+
 <!-- Footer -->
 <?php include "footer.php" ?>
