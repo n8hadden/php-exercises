@@ -26,12 +26,20 @@
     </form>
 </div>
 
-<?php 
-    if(isset($_POST['create'])) {
-        $student_id= $_POST['id'];
-        $fname = $_POST['firstname'];
-        $lname = $_POST['lastname'];
-        $email = $_POST['email'];
+<?php
+if (isset($_POST['create']) && !empty($_POST['create'])) {
+    $name_pattern = "/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/";
+
+    $student_id = $_POST['id'];
+    $fname = $_POST['firstname'];
+    $lname = $_POST['lastname'];
+    $email = $_POST['email'];
+
+    if (
+        filter_var($email, FILTER_VALIDATE_EMAIL) &&
+        preg_match($name_pattern, $fname) &&
+        preg_match($name_pattern, $lname)
+    ) {
 
         $query = "INSERT INTO student(id, firstname, lastname, email) VALUES('{$student_id}', '{$fname}', '{$lname}', '{$email}')";
         $add_student = mysqli_query($conn, $query);
@@ -43,7 +51,10 @@
         }
 
         header("Location: home.php");
+    } else {
+        echo "<div class='container text-danger'>Field Inputs Are Not Acceptable</div>";
     }
+}
 ?>
 
 <!-- Back Button -->

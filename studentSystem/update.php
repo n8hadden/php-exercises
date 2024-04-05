@@ -2,7 +2,7 @@
 <?php include "header.php" ?>
 
 <?php 
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
         $student_id = $_GET['id'];
     }
 
@@ -15,20 +15,6 @@
         $lname = $row['lastname'];
         $email = $row['email'];
     }
-
-    if(isset($_POST['update'])) {
-        $fname = $_POST['firstname'];
-        $lname = $_POST['lastname'];
-        $email = $_POST['email'];
-
-        $query = "UPDATE student SET id = '{$student_id}', firstname = '{$fname}', lastname = '{$lname}', email = '{$email}' WHERE id = $student_id";
-        $update_student = mysqli_query($conn, $query);
-        echo "<script type='text/javascript'>alert('Student data updatedd successfully!')</script>";
-
-        header("Location: home.php");
-    }
-
-
 ?>
 
 <h1 class="text-center container mt-5">Update Student Details</h1>
@@ -55,6 +41,33 @@
         </div>
     </form>
 </div>
+
+<?php 
+
+    if(isset($_POST['update'])) {
+        $name_pattern = "/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/";
+
+        $fname = $_POST['firstname'];
+        $lname = $_POST['lastname'];
+        $email = $_POST['email'];
+
+    if (
+        filter_var($email, FILTER_VALIDATE_EMAIL) &&
+        preg_match($name_pattern, $fname) &&
+        preg_match($name_pattern, $lname)
+    ) {
+        $query = "UPDATE student SET id = '{$student_id}', firstname = '{$fname}', lastname = '{$lname}', email = '{$email}' WHERE id = $student_id";
+        $update_student = mysqli_query($conn, $query);
+        echo "<script type='text/javascript'>alert('Student data updatedd successfully!')</script>";
+
+        header("Location: home.php");
+    } else {
+        echo "<div class='container text-danger'>Field Inputs Are Not Acceptable</div>";
+    }
+}
+
+
+?>
 
 <!-- Back Button -->
 <div class="container text-center mt-5">
