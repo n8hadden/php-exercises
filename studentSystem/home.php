@@ -2,7 +2,8 @@
 <?php include "header.php" ?>
 <div class="container mt-5">
     <h1 class="text-center">Data To Perform CRUD Operations</h1>
-    <a href="create.php" class="btn btn-outline-dark mb-2"><i class="bi bi-person-plus"></i> Create New Student</a>
+    <a href="create.php" class="btn btn-outline-dark mb-2"><i class="bi bi-person-plus"></i> Create New Student </a>
+    <a href="report.php" class="btn btn-outline-dark mb-2"><i class="bi bi-clipboard-data"></i> View Report </a>
     <table class="table table-striped table-bordered table-hover">
         <thead class="table-dark">
             <tr>
