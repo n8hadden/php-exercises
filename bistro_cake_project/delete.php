@@ -6,7 +6,7 @@
         $id = $_GET['id'];
         $query = "DELETE FROM cake WHERE id = {$id}";
         $delete_query = mysqli_query($conn, $query);
-        header("Location: index.php");
+        header("Location: home.php");
     }
 ?>
 

@@ -146,7 +146,7 @@
     ) {
         $query = "UPDATE cake SET addr = '{$addr}', city = '{$city}', zip = '{$zip}', serve_now = '{$serve_now}', table_num = '{$table_num}', cake_opt = '{$opt}', phone_num = '{$phone_num}' WHERE id = $id";
         $update_order = mysqli_query($conn, $query);
-        header("Location: index.php");
+        header("Location: home.php");
     } else {
         echo "<div class='container text-danger'>Field Inputs Are Not Acceptable</div>";
     }
@@ -157,5 +157,5 @@
 
 <!-- Back Button -->
 <div class="container text-center mt-5">
-    <a href="index.php" class="btn btn-warning mt-5">Back To Home</a>
+    <a href="home.php" class="btn btn-warning mt-5">Back To Home</a>
 </div>

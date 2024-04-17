@@ -109,7 +109,7 @@ if (isset($_POST['create']) && !empty($_POST['create'])) {
         if (!$add_order) {
             echo "something went wrong" . mysqli_error($conn);
         } else {
-            header("Location: index.php");
+            header("Location: home.php");
         }
 
 
@@ -121,5 +121,5 @@ if (isset($_POST['create']) && !empty($_POST['create'])) {
 
 <!-- Back Button -->
 <div class="container text-center mt-5">
-    <a href="index.php" class="btn btn-warning mt-5">Back To Home</a>
+    <a href="home.php" class="btn btn-warning mt-5">Back To Home</a>
 </div>
